@@ -6,19 +6,47 @@
 
 A robust content management system built with NestJS, featuring a modular monolith architecture that can evolve into microservices.
 
-## 🏗️ Architecture
-
-- **Modular Monolith**: Well-structured modules that can be extracted into microservices
-- **CMS Module**: Content management (CRUD for articles, tags, authors)
-- **Discovery Module**: Advanced search and filtering through Elasticsearch
-- **Indexing Module**: Asynchronous indexing using BullMQ (Redis)
-- **Ingest Module**: Bulk import and reindexing from external sources
+## 🏗️ System Overview
 
 ### Architecture Overview
 
 ![Architecture Flowchart](./public/Architecture-flowchart.png)
 
 _High-level architecture showing the modular monolith structure and service interactions_
+
+### Database Schema
+
+![Database ERD](./public/ERD.png)
+
+_Complete database schema showing all entities and their relationships_
+
+## 🔄 System Flows
+
+### Content Creation Flow
+
+![Content Creation Sequence](./public/1-Content-Creation-sequence-Diag.png)
+
+_Sequence diagram showing the complete content creation and indexing process_
+
+### Search Flow
+
+![Search Flow Sequence](./public/2-Search-Flow-sequenceDiag.png)
+
+_Sequence diagram showing how search queries are processed through the system_
+
+### Reindex Flow
+
+![Reindex Flow Sequence](./public/3-Reindex-Flow-sequenceDiag.png)
+
+_Sequence diagram showing the bulk reindexing process for external data sources_
+
+## 🏗️ Architecture Details
+
+- **Modular Monolith**: Well-structured modules that can be extracted into microservices
+- **CMS Module**: Content management (CRUD for articles, tags, authors)
+- **Discovery Module**: Advanced search and filtering through Elasticsearch
+- **Indexing Module**: Asynchronous indexing using BullMQ (Redis)
+- **Ingest Module**: Bulk import and reindexing from external sources
 
 ## 🚀 Quick Start
 
@@ -202,12 +230,6 @@ src/
 
 ## 📊 Database Schema
 
-### Entity Relationship Diagram (ERD)
-
-![Database ERD](./public/ERD.png)
-
-_Complete database schema showing all entities and their relationships_
-
 ### Main Entities
 
 - **Author**: `id`, `name`, `email`, `created_at`
@@ -217,26 +239,6 @@ _Complete database schema showing all entities and their relationships_
 - **IngestSource**: `id`, `name`, `type`, `config_json`, `created_at`
 - **IngestJob**: `id`, `source_id`, `status`, `error_message`, `created_at`, `finished_at`
 - **IndexingJob**: `id`, `content_id`, `operation`, `status`, `retry_count`, `created_at`, `updated_at`
-
-## 🔄 System Flows
-
-### Content Creation Flow
-
-![Content Creation Sequence](./public/1-Content-Creation-sequence-Diag.png)
-
-_Sequence diagram showing the complete content creation and indexing process_
-
-### Search Flow
-
-![Search Flow Sequence](./public/2-Search-Flow-sequenceDiag.png)
-
-_Sequence diagram showing how search queries are processed through the system_
-
-### Reindex Flow
-
-![Reindex Flow Sequence](./public/3-Reindex-Flow-sequenceDiag.png)
-
-_Sequence diagram showing the bulk reindexing process for external data sources_
 
 ### Indexing Flow
 
