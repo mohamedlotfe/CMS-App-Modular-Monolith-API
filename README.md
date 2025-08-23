@@ -14,6 +14,12 @@ A robust content management system built with NestJS, featuring a modular monoli
 - **Indexing Module**: Asynchronous indexing using BullMQ (Redis)
 - **Ingest Module**: Bulk import and reindexing from external sources
 
+### Architecture Overview
+
+![Architecture Flowchart](./public/Architecture-flowchart.png)
+
+_High-level architecture showing the modular monolith structure and service interactions_
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -196,6 +202,12 @@ src/
 
 ## 📊 Database Schema
 
+### Entity Relationship Diagram (ERD)
+
+![Database ERD](./public/ERD.png)
+
+_Complete database schema showing all entities and their relationships_
+
 ### Main Entities
 
 - **Author**: `id`, `name`, `email`, `created_at`
@@ -206,7 +218,27 @@ src/
 - **IngestJob**: `id`, `source_id`, `status`, `error_message`, `created_at`, `finished_at`
 - **IndexingJob**: `id`, `content_id`, `operation`, `status`, `retry_count`, `created_at`, `updated_at`
 
-## 🔄 Indexing Flow
+## 🔄 System Flows
+
+### Content Creation Flow
+
+![Content Creation Sequence](./public/1-Content-Creation-sequence-Diag.png)
+
+_Sequence diagram showing the complete content creation and indexing process_
+
+### Search Flow
+
+![Search Flow Sequence](./public/2-Search-Flow-sequenceDiag.png)
+
+_Sequence diagram showing how search queries are processed through the system_
+
+### Reindex Flow
+
+![Reindex Flow Sequence](./public/3-Reindex-Flow-sequenceDiag.png)
+
+_Sequence diagram showing the bulk reindexing process for external data sources_
+
+### Indexing Flow
 
 1. **Content Creation/Update/Delete** in CMS
 2. **Indexing Job Enqueued** to BullMQ queue
