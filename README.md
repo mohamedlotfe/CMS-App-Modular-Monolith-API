@@ -40,6 +40,52 @@ _Sequence diagram showing how search queries are processed through the system_
 
 _Sequence diagram showing the bulk reindexing process for external data sources_
 
+## 📋 API Testing with Postman
+
+A comprehensive Postman collection is included to test all API endpoints. The collection file is located at `public/cms-app-postman-collection.json`.
+
+### Import the Collection
+
+1. Open Postman
+2. Click "Import" button
+3. Select the `cms-app-postman-collection.json` file
+4. The collection will be imported with all endpoints organized by module
+
+### Collection Structure
+
+- **Health**: System health monitoring endpoints
+- **CMS**: Content management endpoints (authors, tags, content)
+- **Discovery**: Search and discovery endpoints
+- **Ingest**: Bulk import and ingestion endpoints
+
+### Environment Variables
+
+The collection uses the following variables that you can set in your Postman environment:
+
+- `baseUrl`: API base URL (default: `http://localhost:3000`)
+- `authorId`: Author ID for testing (set after creating an author)
+- `contentId`: Content ID for testing (set after creating content)
+- `sourceId`: Ingest source ID for testing (set after creating a source)
+- `jobId`: Ingest job ID for testing (set after starting a job)
+- `searchQuery`: Search term for discovery testing
+- `tags`: Comma-separated tags for filtering
+- `author`: Author name for filtering
+- `published`: Published status filter (true/false)
+- `page`: Page number for pagination
+- `limit`: Number of results per page
+
+### Testing Workflow
+
+1. Start the application and external services
+2. Import the Postman collection
+3. Set up environment variables
+4. Test endpoints in order:
+   - Health check first
+   - Create authors and tags
+   - Create content
+   - Test search functionality
+   - Test ingest operations
+
 ## 🏗️ Architecture Details
 
 - **Modular Monolith**: Well-structured modules that can be extracted into microservices
